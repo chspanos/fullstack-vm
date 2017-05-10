@@ -5,5 +5,18 @@
 --
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
+CREATE DATABASE tournament;
+\c tournament;
 
+-- Create a table of players
+CREATE TABLE players (
+  player_id serial PRIMARY KEY,
+  name text
+);
 
+-- Create a table of matches
+CREATE TABLE matches (
+  match_id serial,
+  winner integer REFERENCES players (player_id),
+  loser integer REFERENCES players (player_id)
+);
