@@ -43,7 +43,7 @@ CREATE VIEW opponents as
 
 -- Create a view of opponent score totals by player to use as tie breaker
 CREATE VIEW tie_breaker as
-  SELECT opponents.player, SUM(wins.num) as opp_sum
+  SELECT opponents.player, SUM(wins.num_wins) as opp_sum
     FROM opponents JOIN wins
     ON opponents.opponent = wins.player_id
     GROUP BY opponents.player

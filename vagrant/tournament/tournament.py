@@ -37,7 +37,6 @@ def countPlayers():
     c.execute("select count(*) from players;")
     num_registered = c.fetchall()[0][0]
     db.close()
-    print "Player count is %d" % num_registered
     return num_registered
 
 
@@ -85,6 +84,12 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
+    db = connect()
+    c = db.cursor()
+    c.execute("insert into matches values (default, %s, %s);",
+        (str(winner), str(loser),))
+    db.commit()
+    db.close()
 
 
 def swissPairings():
