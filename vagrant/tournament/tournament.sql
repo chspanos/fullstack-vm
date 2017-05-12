@@ -16,7 +16,7 @@ CREATE TABLE players (
 
 -- Create a table of matches
 CREATE TABLE matches (
-  match_id serial,
+  match_id serial PRIMARY KEY,
   winner integer REFERENCES players (player_id),
   loser integer REFERENCES players (player_id)
 );
